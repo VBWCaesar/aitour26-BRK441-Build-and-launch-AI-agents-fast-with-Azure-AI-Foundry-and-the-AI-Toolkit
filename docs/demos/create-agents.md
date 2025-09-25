@@ -1,9 +1,9 @@
 # Demo Instructions: Create an Agent
 
-**Instructions**: Navigate to the **Agent Builder** and create a new agent. Name the agent **Cora**. Select the **Azure AI Foundry GPT-4o** model as the model.
+**Instructions**: Navigate to the **Agent Builder** and select the v1 agent. Select the **Azure AI Foundry GPT-4o** model as the model.
 
-**Script**: Here it the Agent Builder, I created a new agent named Cora.​
-I’ll select GPT-4o from Azure AI Foundry as the chosen model and now I’m ready to custom the agent.​
+**Script**: Here in the Agent Builder, I created a new agent named Cora.​
+I’ll select GPT-4o from Azure AI Foundry as the chosen model and now I’m ready to customize the agent.​
 
 ---
 
