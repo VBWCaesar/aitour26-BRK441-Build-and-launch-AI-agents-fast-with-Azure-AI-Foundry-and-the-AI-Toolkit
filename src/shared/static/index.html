@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Agent Chat Demo</title>
+    <link rel="icon" type="image/svg+xml" href="https://www.vbw-bochum.de/_assets/d35dfa0d353c9c55da454081fdf28f49/assets/img/logo.svg">
     <!-- Add marked.js for markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <!-- Add highlight.js for code syntax highlighting -->
@@ -18,7 +19,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #183D4C 0%, #A6A49D 100%);
+            background: linear-gradient(135deg, #009a9b 0%, #A6A49D 100%);
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -33,18 +34,25 @@
             width: 90%;
             max-width: 800px;
             height: 90vh;
-            max-height: 600px;
+            max-height: 900px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
         .chat-header {
-            background: linear-gradient(135deg, #3D7288 0%, #183D4C 100%);
-            color: white;
+            background: white;
+            color: #333;
             padding: 20px;
             text-align: center;
             border-radius: 20px 20px 0 0;
+            border-bottom: 2px solid #e1e5e9;
+        }
+
+        .chat-header-logo {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 10px;
         }
 
         .chat-header h1 {
@@ -85,7 +93,7 @@
         }
 
         .message.user .message-content {
-            background: linear-gradient(135deg, #97CCE3 0%, #3D7288 100%);
+            background: linear-gradient(135deg, #97CCE3 0%, #009a9b 100%);
             color: white;
             border-bottom-right-radius: 4px;
         }
@@ -150,7 +158,7 @@
         .message.ai .message-content h5,
         .message.ai .message-content h6 {
             margin: 0.5em 0;
-            color: #2c3e50;
+            color: #009a9b;
         }
 
         .message.ai .message-content p {
@@ -269,7 +277,7 @@
         }
 
         #imageButton {
-            background: #6c757d;
+            background: #009a9b;
             color: white;
             border: none;
             border-radius: 50%;
@@ -288,7 +296,7 @@
         }
 
         #sendButton {
-            background: linear-gradient(135deg, #3D7288 0%, #183D4C 100%);
+            background: linear-gradient(135deg, #3D7288 0%, #009a9b 100%);
             color: white;
             border: none;
             border-radius: 50%;
@@ -393,22 +401,24 @@
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <div class="connection-status" id="connectionStatus">Connecting...</div>
-            <h1>Cora</h1>
-            <p>Your DIY project guide—powered by Zava.</p>
+            <div class="connection-status" id="connectionStatus">Verbinden...</div>
+            <img src="https://www.vbw-bochum.de/_assets/d35dfa0d353c9c55da454081fdf28f49/assets/img/logo.svg" alt="VBW Bauen und Wohnen Logo" class="chat-header-logo">
+            <h1>Ich bin Cora!</h1>
+            <p>Ihre KI-gestützte Assistentin bei der VBW Bauen und Wohnen GmbH.</p>
         </div>
         
         <div class="chat-messages" id="chatMessages">
             <div class="message ai">
                 <div class="message-avatar">Cora</div>
                 <div class="message-content">
-                    Hello! I'm Cora, your AI assistant for Zava home improvement. I can help you with DIY projects and product recommendations. You can also upload images of your project for better assistance!
+                    Guten Tag! Ich bin Cora, Ihre digitale Assistentin der VBW. Ich unterstütze Sie bei allen Anliegen rund um Ihre Wohnung – schnell und unkompliziert. Sie können mir zum Beispiel einfach ein Foto eines Schadens schicken, und ich helfe Ihnen direkt dabei, die passende
+                    Meldung zu erstellen
                 </div>
             </div>
         </div>
         
         <div class="typing-indicator" id="typingIndicator">
-            <span>Cora's working on it...</span>
+            <span>Ich bin dran...</span>
             <div class="typing-dots">
                 <span></span>
                 <span></span>
@@ -423,11 +433,19 @@
             </div>
             <div class="input-container">
                 <div class="input-wrapper">
-                    <textarea id="messageInput" placeholder="Type your message..." rows="1"></textarea>
+                    <textarea id="messageInput" placeholder="Tippen Sie hier Ihre Frage ein..." rows="1"></textarea>
                 </div>
                 <div class="input-controls">
-                    <button id="imageButton" title="Upload image">📷</button>
-                    <button id="sendButton" title="Send message">➤</button>
+                    <button id="imageButton" title="Bild hochladen"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                        <circle cx="12" cy="13" r="4" />
+                    </svg></button>
+                    <button id="sendButton" title="Nachricht senden"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+</button>
                 </div>
             </div>
             <input type="file" id="imageInput" accept="image/*">
@@ -500,13 +518,13 @@
 
                 // Validate file type
                 if (!file.type.startsWith('image/')) {
-                    alert('Please select a valid image file.');
+                    alert('Bitte wählen Sie eine gültige Bilddatei aus.');
                     return;
                 }
 
                 // Validate file size (max 10MB)
                 if (file.size > 10 * 1024 * 1024) {
-                    alert('File size too large. Please select an image smaller than 10MB.');
+                    alert('Dateigröße zu groß. Bitte wählen Sie ein Bild kleiner als 10MB aus.');
                     return;
                 }
 
@@ -530,12 +548,12 @@
                         this.currentImageUrl = result.file_url;
                         this.showImagePreview(result.file_url);
                     } else {
-                        alert(result.error || 'Upload failed');
+                        alert(result.error || 'Upload fehlgeschlagen');
                     }
 
                 } catch (error) {
                     console.error('Upload error:', error);
-                    alert('Failed to upload image. Please try again.');
+                    alert('Bild konnte nicht hochgeladen werden. Bitte versuchen Sie es erneut.');
                 } finally {
                     // Restore button state
                     this.imageButton.textContent = '📷';
@@ -610,7 +628,7 @@
                 
                 // Send message to server
                 const messageData = { 
-                    message: message || "I've shared an image with you."
+                    message: message || "Ich habe Ihnen ein Bild geschickt."
                 };
                 
                 if (this.currentImageUrl) {
@@ -640,7 +658,7 @@
                 
                 const avatar = document.createElement('div');
                 avatar.className = 'message-avatar';
-                avatar.textContent = sender === 'user' ? 'You' : 'Cora';
+                avatar.textContent = sender === 'user' ? 'Sie' : 'Cora';
                 
                 const messageContent = document.createElement('div');
                 messageContent.className = 'message-content';
@@ -650,7 +668,7 @@
                     const img = document.createElement('img');
                     img.src = imageUrl;
                     img.className = 'message-image';
-                    img.alt = 'Uploaded image';
+                    img.alt = 'Hochgeladenes Bild';
                     img.addEventListener('click', () => {
                         window.open(imageUrl, '_blank');
                     });
